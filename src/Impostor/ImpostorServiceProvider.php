@@ -2,7 +2,9 @@
 
 namespace Sztyup\Impostor;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Sztyup\Impostor\Middleware\Impersonate;
 
 class ImpostorServiceProvider extends ServiceProvider
 {
@@ -11,8 +13,8 @@ class ImpostorServiceProvider extends ServiceProvider
         $this->app->singleton(ImpersonationManager::class);
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/impostor.php',
-            'nexus'
+            __DIR__.'/../config/config.php',
+            'impostor'
         );
     }
 
@@ -22,6 +24,6 @@ class ImpostorServiceProvider extends ServiceProvider
             __DIR__.'/../config/config.php' => config_path('impostor.php'),
         ], 'config');
 
-        $this->loadViewsFrom(__DIR__.'/../view', 'impostor');
+        $this->loadViewsFrom(__DIR__.'/../views', 'impostor');
     }
 }
