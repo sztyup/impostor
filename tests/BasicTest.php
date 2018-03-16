@@ -9,6 +9,7 @@ class BasicTest extends TestCase
         $this->get('/impersonate/2')
             ->assertSuccessful()
             ->assertSee('success')
+            ->assertSee('<div class="impersonate">')
         ;
     }
 }
